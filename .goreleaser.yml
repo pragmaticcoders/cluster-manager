@@ -1,0 +1,32 @@
+before:
+  hooks:
+    - go mod download
+builds:
+- env:
+  - CGO_ENABLED=0
+  binary: kubecare-cluster-manager
+  dir: ./cmd/cluster-manager
+  goarch:
+  - arm
+  - arm64
+  - amd64
+  - ppc64le
+  goos:
+  - windows
+  - darwin
+  - linux
+archives:
+- name_template: "kubecare-cluster-manager_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+  format_overrides:
+  - goos: windows
+    format: zip
+checksum:
+  name_template: 'checksums_{{ .Version }}.txt'
+snapshot:
+  name_template: "{{ .Tag }}"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs:'
+    - '^test:'
