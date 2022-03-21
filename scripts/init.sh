@@ -24,7 +24,8 @@ then
   cd addons
   git pull
 else
-  git clone https://github.com/kubecare/cluster-manager-addons.git addons
+  https://github.com/pragmaticcoders/cluster-manager-addons.git
+  git clone https://github.com/pragmaticcoders/cluster-manager-addons.git addons
   chmod -R a+w addons # to allow future updates of the repo
 fi
 
